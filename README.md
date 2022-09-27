@@ -1,13 +1,13 @@
 # TF-OtimizacaoCombinatoria
 Heurística Tabu Aplicada ao Problema 3
 
-Baixando e extraindo instancias do professor:
+  Baixando e extraindo instancias do professor:
 
-link: https://moodle.inf.ufrgs.br/pluginfile.php/183712/mod_resource/content/2/problema3-instancias-resultados.zip
+  link: https://moodle.inf.ufrgs.br/pluginfile.php/183712/mod_resource/content/2/problema3-instancias-resultados.zip
 
-Baixar arquivo e extrair na root do projeto.
+  Baixar arquivo e extrair na root do projeto.
 
-Utilizar -Exrair para "problema3-instancias-resultados\"-
+  Utilizar -Exrair para "problema3-instancias-resultados\"-
 
 
 Descrição busca Tabu:
