@@ -2,7 +2,11 @@
 Heurística Tabu Aplicada ao Problema 3
 
 
+
+
 Descrição busca Tabu:
+
+
 
 ![image](https://user-images.githubusercontent.com/57137727/192568881-5b6ded86-ea04-4015-ae59-2523f8e7bf65.png)
 
@@ -11,7 +15,15 @@ Descrição busca Tabu:
 ![image](https://user-images.githubusercontent.com/57137727/192569015-fe3e5abb-45a1-4d8b-8e13-d03ea192eb8c.png)
 
 
+
+
+
+
+
+
 Pseudo Código:
+
+
 
 ![image](https://user-images.githubusercontent.com/57137727/192568681-9d9244e0-cd7f-4f2c-a0db-f30026a3091e.png)
 
