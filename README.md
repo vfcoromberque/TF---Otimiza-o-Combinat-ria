@@ -1,2 +1,2 @@
-# TF---Otimiza-o-Combinat-ria
+# TF-OtimizacaoCombinatoria
 Heurística Tabu Aplicada ao Problema 3
