@@ -9,34 +9,32 @@ public class Problema {
     //Atributos
 
         //Variaveis
-            protected boolean[] xi;             //Vetor binário, identificando os ativos escolhidos
+            protected boolean[] x;             //Vetor binário, identificando os ativos escolhidos
 
-            protected int[] yi;                 //Vetor de inteiros, identificando o número de ativos comprados
+            protected int[] y;                 //Vetor de inteiros, identificando o número de ativos comprados
 
-            //Não sei se precisa ser utilizado na implementação
-//            protected boolean[][] zij;           //Vetor que identifica se ativos xi e xj são utilizados (xi AND xj)
 
-        //Contantes
+        //Constantes
 
             protected int numeroAtivos;
 
-            protected double[] ci;              //Custo Ativos
+            protected double[] custoAtivos;              //Custo Ativos
 
-            protected double[] vi;              //Retorno Esperado dos Ativos
+            protected double[] retornoAtivos;              //Retorno Esperado dos Ativos
 
-            protected double[][] cov_ij;        //Covariancia entre Ativos
+            protected double[][] cov;        //Covariancia entre Ativos
 
-            protected double[][] cor_ij;        //Correlação entre Ativos
+            protected double[][] cor;        //Correlação entre Ativos
 
-            protected double R;                 //Risco entre Ativos
+            protected double riscoTotal;                 //Risco entre Ativos
 
-            protected double Rmax;              //Risco Máximo
+            protected double riscoMaximo;              //Risco Máximo
 
             protected double Tmax;              //Correlação Máxima entre Ativos
 
             protected double t;                 //Percentagem Máxima de ativos selecionados com cor_ij acima de Tmax
 
-            protected double C;                 //Budjet para compra de ativos
+            protected double Budjet;                 //Budjet para compra de ativos
 
 
     //Construct
@@ -54,38 +52,42 @@ public class Problema {
 
                     this.numeroAtivos = scanner.nextInt();
 
-                    this.C = Double.parseDouble(scanner.next());
+                    this.x = new boolean[numeroAtivos];
 
-                    this.Rmax = Double.parseDouble(scanner.next());
+                    this.y = new int[numeroAtivos];
+
+                    this.Budjet = Double.parseDouble(scanner.next());
+
+                    this.riscoMaximo = Double.parseDouble(scanner.next());
 
                     this.t = Double.parseDouble(scanner.next());
 
                     this.Tmax = Double.parseDouble(scanner.next());
 
-                    this.ci = new double[numeroAtivos];
+                    this.custoAtivos = new double[numeroAtivos];
 
                     for (int i = 0; i<numeroAtivos; i++){
-                        this.ci[i] = Double.parseDouble(scanner.next());
+                        this.custoAtivos[i] = Double.parseDouble(scanner.next());
                     }
 
-                    this.vi = new double[numeroAtivos];
+                    this.retornoAtivos = new double[numeroAtivos];
 
                     for (int i = 0; i<numeroAtivos; i++){
-                        this.vi[i] = Double.parseDouble(scanner.next());
+                        this.retornoAtivos[i] = Double.parseDouble(scanner.next());
                     }
 
-                    this.cov_ij = new double[numeroAtivos][numeroAtivos];
+                    this.cov = new double[numeroAtivos][numeroAtivos];
 
                     for (int i = 0; i<numeroAtivos; i++){
                         for (int j = 0; j<numeroAtivos; j++)
-                            this.cov_ij[i][j] = Double.parseDouble(scanner.next());
+                            this.cov[i][j] = Double.parseDouble(scanner.next());
                     }
 
-                    this.cor_ij = new double[numeroAtivos][numeroAtivos];
+                    this.cor = new double[numeroAtivos][numeroAtivos];
 
                     for (int i = 0; i<numeroAtivos; i++){
                         for (int j = 0; j<numeroAtivos; j++)
-                            this.cor_ij[i][j] = Double.parseDouble(scanner.next());
+                            this.cor[i][j] = Double.parseDouble(scanner.next());
                     }
 
                 } catch (InputMismatchException e) {
@@ -149,51 +151,59 @@ public class Problema {
             return str;
         }
 
-        //Como ainda não sei se precisa ser uttilizado vetor zij não implementei ainda
-//        public double calculoRisco(){
-//            double result;
-//
-//            for (int i = 0; i<numeroAtivos; i++){
-//                for (int j = i; j<numeroAtivos; j++){
-//
-//                }
-//            }
-//        }
+
+        public double calculoRisco(){
+            double result = 0;
+
+            for (int i = 0; i<numeroAtivos; i++){
+                for (int j = i; j<numeroAtivos; j++){
+                    if(x[i] && x[j]){
+                        result += cov[i][j];
+                    }
+                }
+            }
+
+            return result;
+        }
 
         public int getNumeroAtivos() {
             return numeroAtivos;
         }
 
-        public boolean[] getXi() {
-            return xi;
+        public boolean[] getX() {
+            return x;
         }
 
-        public int[] getYi() {
-            return yi;
+        public void setX(boolean[] x) {
+            this.x = x;
         }
 
-        public double[] getCi() {
-            return ci;
+        public int[] getY() {
+                return y;
         }
 
-        public double[] getVi() {
-            return vi;
+        public double[] getCustoAtivos() {
+            return custoAtivos;
         }
 
-        public double[][] getCov_ij() {
-            return cov_ij;
+        public double[] getRetornoAtivos() {
+            return retornoAtivos;
         }
 
-        public double[][] getCor_ij() {
-            return cor_ij;
+        public double[][] getCov() {
+            return cov;
         }
 
-        public double getR() {
-            return R;
+        public double[][] getCor() {
+            return cor;
         }
 
-        public double getRmax() {
-            return Rmax;
+        public double getRiscoTotal() {
+            return riscoTotal;
+        }
+
+        public double getRiscoMaximo() {
+            return riscoMaximo;
         }
 
         public double getTmax() {
@@ -204,7 +214,7 @@ public class Problema {
             return t;
         }
 
-        public double getC() {
-            return C;
+        public double getBudjet() {
+            return Budjet;
         }
 }
