@@ -1,4 +1,5 @@
 import com.problema.Problema;
+import com.solucao.Solucao;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -31,7 +32,7 @@ public class ProblemaTest {
         var[0] = true;
         problema.setX(var);
         double expectedValue = problema.getCov()[0][0];
-        double calculatedValue = problema.calculoRisco();
+        double calculatedValue = problema.calculoRisco(var);
 
         Assert.assertEquals(expectedValue, calculatedValue, 0.01);
     }
@@ -41,12 +42,45 @@ public class ProblemaTest {
         Problema problema = new Problema(1);
         boolean[] var = new boolean[problema.getNumeroAtivos()];
         var[0] = true;
-        problema.setX(var);
-        double value = problema.calculoRisco();
+
+        double value = problema.calculoRisco(var);
 
         boolean calculatedValue = value <= problema.getRiscoMaximo();
 
         Assert.assertTrue(calculatedValue);
+    }
+
+    @Test
+    public void testeRetornoUnitario(){
+        Problema problema = new Problema(1);
+        boolean[] var = new boolean[problema.getNumeroAtivos()];
+        var[0] = true;
+        var[2] = true;
+
+        double calculatedValue = problema.calculoRetornoUnitario(var);
+
+        double expectedValue = problema.getRetornoAtivos()[0] + problema.getRetornoAtivos()[2];
+
+        Assert.assertEquals(expectedValue, calculatedValue, 0.01);
+    }
+
+    @Test
+    public void testeSolucaoInicialComMaiorRetornoUnitario(){
+        Problema problema = new Problema(1);
+        Solucao solucao = new Solucao(problema);
+
+        boolean[] calculatedValue = solucao.getMelhorSolucao();
+
+        boolean[] expectedValue = new boolean[problema.getNumeroAtivos()];
+        expectedValue[33] = true;
+
+        System.out.println(Arrays.toString(calculatedValue));
+
+        System.out.println(Arrays.toString(solucao.getSolucaoAtual()));
+
+        System.out.println(Arrays.toString(expectedValue));
+
+        System.out.println(solucao.getMelhorRetorno());
     }
 
 }

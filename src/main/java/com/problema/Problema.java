@@ -152,14 +152,26 @@ public class Problema {
         }
 
 
-        public double calculoRisco(){
+        public double calculoRisco(boolean[] possivelSolucao){
             double result = 0;
 
             for (int i = 0; i<numeroAtivos; i++){
                 for (int j = i; j<numeroAtivos; j++){
-                    if(x[i] && x[j]){
+                    if(possivelSolucao[i] && possivelSolucao[j]){
                         result += cov[i][j];
                     }
+                }
+            }
+
+            return result;
+        }
+
+        public double calculoRetornoUnitario(boolean[] possivelSolucao){
+            double result = 0;
+
+            for (int i = 0; i<numeroAtivos; i++){
+                if(possivelSolucao[i]){
+                    result += retornoAtivos[i];
                 }
             }
 
