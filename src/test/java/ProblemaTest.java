@@ -64,23 +64,4 @@ public class ProblemaTest {
         Assert.assertEquals(expectedValue, calculatedValue, 0.01);
     }
 
-    @Test
-    public void testeSolucaoInicialComMaiorRetornoUnitario(){
-        Problema problema = new Problema(1);
-        Solucao solucao = new Solucao(problema);
-
-        boolean[] calculatedValue = solucao.getMelhorSolucao();
-
-        boolean[] expectedValue = new boolean[problema.getNumeroAtivos()];
-        expectedValue[33] = true;
-
-        System.out.println(Arrays.toString(calculatedValue));
-
-        System.out.println(Arrays.toString(solucao.getSolucaoAtual()));
-
-        System.out.println(Arrays.toString(expectedValue));
-
-        System.out.println(solucao.getMelhorRetorno());
-    }
-
 }

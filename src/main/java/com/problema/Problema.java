@@ -166,6 +166,30 @@ public class Problema {
             return result;
         }
 
+        public  double calculoCustoTotal(int[] possivelSolucao){
+            double result = 0;
+
+            for (int i = 0; i<numeroAtivos; i++){
+                if(possivelSolucao[i] > 0){
+                    result += custoAtivos[i] * possivelSolucao[i];
+                }
+            }
+
+            return result;
+        }
+
+    public double calculoCustoSimples(boolean[] possivelSolucao){
+        double result = 0;
+
+        for (int i = 0; i<numeroAtivos; i++){
+            if(possivelSolucao[i]){
+                result += custoAtivos[i];
+            }
+        }
+
+        return result;
+    }
+
         public double calculoRetornoUnitario(boolean[] possivelSolucao){
             double result = 0;
 
@@ -177,6 +201,18 @@ public class Problema {
 
             return result;
         }
+
+    public double calculoRetornoTotal(){
+        double result = 0;
+
+        for (int i = 0; i<numeroAtivos; i++){
+            if(y[i]>0){
+                result += retornoAtivos[i] * y[i];
+            }
+        }
+
+        return result;
+    }
 
         public int getNumeroAtivos() {
             return numeroAtivos;
@@ -229,4 +265,48 @@ public class Problema {
         public double getBudjet() {
             return Budjet;
         }
+
+    public void setY(int[] y) {
+        this.y = y;
+    }
+
+    public void setNumeroAtivos(int numeroAtivos) {
+        this.numeroAtivos = numeroAtivos;
+    }
+
+    public void setCustoAtivos(double[] custoAtivos) {
+        this.custoAtivos = custoAtivos;
+    }
+
+    public void setRetornoAtivos(double[] retornoAtivos) {
+        this.retornoAtivos = retornoAtivos;
+    }
+
+    public void setCov(double[][] cov) {
+        this.cov = cov;
+    }
+
+    public void setCor(double[][] cor) {
+        this.cor = cor;
+    }
+
+    public void setRiscoTotal(double riscoTotal) {
+        this.riscoTotal = riscoTotal;
+    }
+
+    public void setRiscoMaximo(double riscoMaximo) {
+        this.riscoMaximo = riscoMaximo;
+    }
+
+    public void setTmax(double tmax) {
+        Tmax = tmax;
+    }
+
+    public void setT(double t) {
+        this.t = t;
+    }
+
+    public void setBudjet(double budjet) {
+        Budjet = budjet;
+    }
 }
