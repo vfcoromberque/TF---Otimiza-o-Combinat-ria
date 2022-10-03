@@ -32,35 +32,23 @@ public class TabuTest {
         Solucao solucao = new Solucao(problema);
         Tabu tabu = new Tabu(problema, solucao);
 
-        System.out.println(Arrays.toString(tabu.getSolucao().getMelhorSolucao()));
-        System.out.println(tabu.getSolucao().getMovimento());
+        System.out.println(Arrays.toString(tabu.getProblema().getY()));
         System.out.println(tabu.getSolucao().getMelhorRetorno());
 
         tabu.solve(600);
 
-        System.out.println(Arrays.toString(tabu.getSolucao().getMelhorSolucao()));
-        System.out.println(Arrays.toString(tabu.getProblema().getX()));
-        System.out.println(tabu.getSolucao().getMovimento());
-        System.out.println(tabu.getSolucao().getMelhorRetorno());
-
-        System.out.println(tabu.getSolucao().getRisco());
-        System.out.println(tabu.getProblema().getRiscoMaximo());
-
-        System.out.println(tabu.getProblema().getBudjet());
-        System.out.println(tabu.getProblema().calculoCustoSimples(tabu.getSolucao().getMelhorSolucao()));
-        System.out.println(tabu.getProblema().calculoCustoTotal(tabu.getProblema().getY()));
-
         System.out.println(Arrays.toString(tabu.getProblema().getY()));
+        System.out.println(tabu.getSolucao().getMelhorRetorno());
 
     }
 
     @Test
     public void testSolveMochila(){
-        Problema problema = new Problema(3);
+        Problema problema = new Problema(1);
         Solucao solucao = new Solucao(problema);
         Tabu tabu = new Tabu(problema, solucao);
 
-        tabu.solve(1000);
+        tabu.solve(400);
 
         System.out.println(Arrays.toString(tabu.getProblema().getY()));
 

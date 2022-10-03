@@ -26,8 +26,6 @@ public class Problema {
 
             protected double[][] cor;        //Correlação entre Ativos
 
-            protected double riscoTotal;                 //Risco entre Ativos
-
             protected double riscoMaximo;              //Risco Máximo
 
             protected double Tmax;              //Correlação Máxima entre Ativos
@@ -246,10 +244,6 @@ public class Problema {
             return cor;
         }
 
-        public double getRiscoTotal() {
-            return riscoTotal;
-        }
-
         public double getRiscoMaximo() {
             return riscoMaximo;
         }
@@ -266,47 +260,4 @@ public class Problema {
             return Budjet;
         }
 
-    public void setY(int[] y) {
-        this.y = y;
-    }
-
-    public void setNumeroAtivos(int numeroAtivos) {
-        this.numeroAtivos = numeroAtivos;
-    }
-
-    public void setCustoAtivos(double[] custoAtivos) {
-        this.custoAtivos = custoAtivos;
-    }
-
-    public void setRetornoAtivos(double[] retornoAtivos) {
-        this.retornoAtivos = retornoAtivos;
-    }
-
-    public void setCov(double[][] cov) {
-        this.cov = cov;
-    }
-
-    public void setCor(double[][] cor) {
-        this.cor = cor;
-    }
-
-    public void setRiscoTotal(double riscoTotal) {
-        this.riscoTotal = riscoTotal;
-    }
-
-    public void setRiscoMaximo(double riscoMaximo) {
-        this.riscoMaximo = riscoMaximo;
-    }
-
-    public void setTmax(double tmax) {
-        Tmax = tmax;
-    }
-
-    public void setT(double t) {
-        this.t = t;
-    }
-
-    public void setBudjet(double budjet) {
-        Budjet = budjet;
-    }
 }

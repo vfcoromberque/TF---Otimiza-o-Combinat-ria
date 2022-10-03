@@ -33,7 +33,7 @@ public class Tabu {
 
     public void solve(int numInteracoes){
 
-        int tabuSize = 10;
+        int tabuSize = 2;
 
         int[] auxTabu = new int[tabuSize];
 
@@ -77,7 +77,8 @@ public class Tabu {
             int maior = 0;
 
             for (int i = 0; i < auxiliar.size(); i++) {
-                if(getProblema().getRetornoAtivos()[auxiliar.get(i)] > getProblema().getRetornoAtivos()[auxiliar.get(maior)]){
+                if(getProblema().getRetornoAtivos()[auxiliar.get(i)]/getProblema().getCustoAtivos()[auxiliar.get(i)] >
+                        getProblema().getRetornoAtivos()[auxiliar.get(maior)]/getProblema().getCustoAtivos()[maior]){
                     maior = i;
                 }
             }
@@ -88,13 +89,13 @@ public class Tabu {
         }
 
 
-        for (int i = 0; i < auxiliarSort.size(); i++) {
+        for (Integer integer : auxiliarSort) {
 
             while (getProblema().calculoCustoTotal(getProblema().getY()) <= getProblema().getBudjet()) {
-                ++getProblema().getY()[auxiliarSort.get(i)];
+                ++getProblema().getY()[integer];
             }
 
-            --getProblema().getY()[auxiliarSort.get(i)];
+            --getProblema().getY()[integer];
 
         }
 
@@ -104,10 +105,10 @@ public class Tabu {
 
     public void iteracaoVizinhos() {
 
-        boolean[] auxiliar = new boolean[getProblema().getNumeroAtivos()];
+        boolean[] auxiliar;
         boolean[] menosPior = new boolean[getProblema().getNumeroAtivos()];
         int movimentoMenosPior = 0;
-        double diferenca = 1000;
+        double diferenca = 0;
 
         for (int i = 0; i < this.problema.getNumeroAtivos(); i++) {
 
@@ -128,8 +129,10 @@ public class Tabu {
                             getSolucao().setMovimento(i);
 
 
-                        } else if (getProblema().calculoRetornoUnitario(getSolucao().getSolucaoAtual()) -
-                                getProblema().calculoRetornoUnitario(auxiliar) < diferenca) {
+                        } else if (getProblema().calculoRetornoUnitario(getSolucao().getSolucaoAtual())/
+                                this.problema.calculoCustoSimples(getSolucao().getSolucaoAtual()) -
+                                getProblema().calculoRetornoUnitario(auxiliar)/
+                                        this.problema.calculoCustoSimples(auxiliar) > diferenca) {
 
                             menosPior = Arrays.copyOf(auxiliar, auxiliar.length);
                             movimentoMenosPior = i;
@@ -148,7 +151,7 @@ public class Tabu {
             this.problema.setX(Arrays.copyOf(getSolucao().getMelhorSolucao(), getProblema().getNumeroAtivos()));
         }
 
-        if (Arrays.equals(getSolucao().getSolucaoAtual(), getSolucao().getMelhorSolucao())) {
+        if (!Arrays.equals(getSolucao().getSolucaoAtual(), getSolucao().getMelhorSolucao())) {
             getSolucao().setMelhorRetorno(this.problema.calculoRetornoUnitario(getSolucao().getMelhorSolucao()));
         } else {
             getSolucao().setMovimento(movimentoMenosPior);
@@ -161,10 +164,6 @@ public class Tabu {
 
     }
 
-    public boolean[] getMatrizTabu() {
-        return matrizTabu;
-    }
-
     public Problema getProblema() {
         return problema;
     }
@@ -173,15 +172,4 @@ public class Tabu {
         return solucao;
     }
 
-    public void setMatrizTabu(boolean[] matrizTabu) {
-        this.matrizTabu = matrizTabu;
-    }
-
-    public void setProblema(Problema problema) {
-        this.problema = problema;
-    }
-
-    public void setSolucao(Solucao solucao) {
-        this.solucao = solucao;
-    }
 }

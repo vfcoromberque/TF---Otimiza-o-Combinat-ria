@@ -63,10 +63,6 @@ public class Solucao {
         return this.problema.calculoRisco(sol) <= this.problema.getRiscoMaximo();
     }
 
-    public double getRisco() {
-        return risco;
-    }
-
     public void setRisco(double risco) {
         this.risco = risco;
     }
