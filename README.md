@@ -34,3 +34,15 @@ Pseudo Código:
 ![image](https://user-images.githubusercontent.com/57137727/192568681-9d9244e0-cd7f-4f2c-a0db-f30026a3091e.png)
 
 
+
+Descrição Problema 3:
+
+![image](https://user-images.githubusercontent.com/57137727/193717200-3ed1e33c-7671-4ae5-8749-4b8457389acf.png)
+
+
+Instanciação Problema 3:
+
+![image](https://user-images.githubusercontent.com/57137727/193717251-82ddb52a-2565-4fe6-aa3c-9c5f7c21e7a5.png)
+
+
+
